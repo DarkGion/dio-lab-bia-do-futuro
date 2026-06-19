@@ -130,12 +130,6 @@ Todas as ferramentas abaixo possuem versões gratuitas:
 │
 ├── 📁 src/                           # Código da aplicação
 │   └── app.py                        # (exemplo de estrutura)
-│
-├── 📁 assets/                        # Imagens e diagramas
-│   └── ...
-│
-└── 📁 examples/                      # Referências e exemplos
-    └── README.md
 ```
 
 ---
