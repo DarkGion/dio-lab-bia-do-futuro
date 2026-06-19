@@ -1,143 +1,54 @@
-# 🤖 Agente Financeiro Inteligente com IA Generativa
+"""# finAI 🚀 | Agente Financeiro Inteligente & Proativo
 
-## Contexto
+> Desafio de Projeto realizado para o Lab **"BIA do Futuro"** da **DigitalInnovationOne (DIO)** em parceria com o **Bradesco**.
 
-Os assistentes virtuais no setor financeiro estão evoluindo de simples chatbots reativos para **agentes inteligentes e proativos**. Neste desafio, você vai idealizar e prototipar um agente financeiro que utiliza IA Generativa para:
-
-- **Antecipar necessidades** ao invés de apenas responder perguntas
-- **Personalizar** sugestões com base no contexto de cada cliente
-- **Cocriar soluções** financeiras de forma consultiva
-- **Garantir segurança** e confiabilidade nas respostas (anti-alucinação)
-
-> [!TIP]
-> Na pasta [`examples/`](./examples/) você encontra referências de implementação para cada etapa deste desafio.
+O **finAI** é um assistente virtual e agente financeiro inteligente que utiliza Inteligência Artificial Generativa para transformar a relação dos clientes com suas finanças pessoais. Diferente dos chatbots tradicionais e reativos, o finAI atua de forma **proativa, consultiva e hiper-personalizada**, antecipando necessidades, mitigando riscos de endividamento e sugerindo as melhores alocações de investimentos com base no perfil individual.
 
 ---
 
-## O Que Você Deve Entregar
+## 📋 Índice
 
-### 1. Documentação do Agente
-
-Defina **o que** seu agente faz e **como** ele funciona:
-
-- **Caso de Uso:** Qual problema financeiro ele resolve? (ex: consultoria de investimentos, planejamento de metas, alertas de gastos)
-- **Persona e Tom de Voz:** Como o agente se comporta e se comunica?
-- **Arquitetura:** Fluxo de dados e integração com a base de conhecimento
-- **Segurança:** Como evitar alucinações e garantir respostas confiáveis?
-
-📄 **Template:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
-
----
-
-### 2. Base de Conhecimento
-
-Utilize os **dados mockados** disponíveis na pasta [`data/`](./data/) para alimentar seu agente:
-
-| Arquivo | Formato | Descrição |
-|---------|---------|-----------|
-| `transacoes.csv` | CSV | Histórico de transações do cliente |
-| `historico_atendimento.csv` | CSV | Histórico de atendimentos anteriores |
-| `perfil_investidor.json` | JSON | Perfil e preferências do cliente |
-| `produtos_financeiros.json` | JSON | Produtos e serviços disponíveis |
-
-Você pode adaptar ou expandir esses dados conforme seu caso de uso.
-
-📄 **Template:** [`docs/02-base-conhecimento.md`](./docs/02-base-conhecimento.md)
+- [Visão Geral e Caso de Uso](#-visão-geral-e-caso-de-uso)
+- [Funcionalidades Principais](#-funcionalidades-principais)
+- [Persona e Tom de Voz](#-persona-e-tom-de-voz)
+- [Arquitetura e Fluxo de Dados](#-arquitetura-e-fluxo-de-dados)
+- [Segurança e Diretrizes Anti-Alucinação](#-segurança-e-diretrizes-anti-alucinação)
+- [Estrutura da Base de Conhecimento](#-estrutura-da-base-de-conhecimento)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Como Executar o Projeto](#-como-executar-o-projeto)
+- [Estrutura do Repositório](#-estrutura-do-repositório)
 
 ---
 
-### 3. Prompts do Agente
+## 💡 Visão Geral e Caso de Uso
 
-Documente os prompts que definem o comportamento do seu agente:
+O principal problema resolvido pelo **finAI** é a falta de planejamento financeiro e a dificuldade na tomada de decisões de investimento por parte de clientes de varejo e alta renda. O agente cruza dados históricos de consumo com o perfil de investidor para:
 
-- **System Prompt:** Instruções gerais de comportamento e restrições
-- **Exemplos de Interação:** Cenários de uso com entrada e saída esperada
-- **Tratamento de Edge Cases:** Como o agente lida com situações limite
-
-📄 **Template:** [`docs/03-prompts.md`](./docs/03-prompts.md)
+1. **Prevenir o superendividamento:** Identificando padrões atípicos de gastos e emitindo alertas preditivos.
+2. **Potencializar a capacidade de poupança:** Recomendando aportes automáticos sempre que houver sobra de caixa estimada para o mês.
+3. ** Democratizar a consultoria de investimentos:** Traduzindo termos técnicos e recomendando portfólios adequados sem jargões complexos.
 
 ---
 
-### 4. Aplicação Funcional
+## ✨ Funcionalidades Principais
 
-Desenvolva um **protótipo funcional** do seu agente:
-
-- Chatbot interativo (sugestão: Streamlit, Gradio ou similar)
-- Integração com LLM (via API ou modelo local)
-- Conexão com a base de conhecimento
-
-📁 **Pasta:** [`src/`](./src/)
+* **Análise Preditiva de Saldo:** Avalia a recorrência de despesas e avisa o cliente se o saldo projetado para o fim do mês for insuficiente.
+* **Recomendação de Portfólio sob Medida:** Cruza o perfil de investidor do cliente com o catálogo de produtos disponíveis na instituição financeira.
+* **Alocação Inteligente de Sobras:** Identifica quando o cliente gasta menos que a média e sugere a transferência do saldo remanescente para um produto de liquidez diária.
+* **Conciliação e Explicação de Gastos:** Permite ao usuário perguntar coisas como: *"Por que minha fatura este mês veio R$ 300 mais alta que o normal?"* e obter um sumário analítico imediato.
 
 ---
 
-### 5. Avaliação e Métricas
+## 🎭 Persona e Tom de Voz
 
-Descreva como você avalia a qualidade do seu agente:
+O finAI adota a persona de um **Especialista em Finanças Pessoais de Confiança**.
 
-**Métricas Sugeridas:**
-- Precisão/assertividade das respostas
-- Taxa de respostas seguras (sem alucinações)
-- Coerência com o perfil do cliente
-
-📄 **Template:** [`docs/04-metricas.md`](./docs/04-metricas.md)
+* **Tom de Voz:** * **Empático e Proativo:** Sempre oferece uma solução ou um próximo passo prático, em vez de apenas apontar um problema.
+  * **Claro e Didático:** Evita o "financês" corporativo, explicando conceitos como CDI, IPCA e Liquidez de forma simples e acessível.
+  * **Seguro e Confiável:** Não faz promessas de ganhos irreais (ex: "rendimento garantido acima do mercado") e mantém foco rigoroso no gerenciamento de riscos.
 
 ---
 
-### 6. Pitch
+## 🏗️ Arquitetura e Fluxo de Dados
 
-Grave um **pitch de 3 minutos** (estilo elevador) apresentando:
-
-- Qual problema seu agente resolve?
-- Como ele funciona na prática?
-- Por que essa solução é inovadora?
-
-📄 **Template:** [`docs/05-pitch.md`](./docs/05-pitch.md)
-
----
-
-## Ferramentas Sugeridas
-
-Todas as ferramentas abaixo possuem versões gratuitas:
-
-| Categoria | Ferramentas |
-|-----------|-------------|
-| **LLMs** | [ChatGPT](https://chat.openai.com/), [Copilot](https://copilot.microsoft.com/), [Gemini](https://gemini.google.com/), [Claude](https://claude.ai/), [Ollama](https://ollama.ai/) |
-| **Desenvolvimento** | [Streamlit](https://streamlit.io/), [Gradio](https://www.gradio.app/), [Google Colab](https://colab.research.google.com/) |
-| **Orquestração** | [LangChain](https://www.langchain.com/), [LangFlow](https://www.langflow.org/), [CrewAI](https://www.crewai.com/) |
-| **Diagramas** | [Mermaid](https://mermaid.js.org/), [Draw.io](https://app.diagrams.net/), [Excalidraw](https://excalidraw.com/) |
-
----
-
-## Estrutura do Repositório
-
-```
-📁 lab-agente-financeiro/
-│
-├── 📄 README.md
-│
-├── 📁 data/                          # Dados mockados para o agente
-│   ├── historico_atendimento.csv     # Histórico de atendimentos (CSV)
-│   ├── perfil_investidor.json        # Perfil do cliente (JSON)
-│   ├── produtos_financeiros.json     # Produtos disponíveis (JSON)
-│   └── transacoes.csv                # Histórico de transações (CSV)
-│
-├── 📁 docs/                          # Documentação do projeto
-│   ├── 01-documentacao-agente.md     # Caso de uso e arquitetura
-│   ├── 02-base-conhecimento.md       # Estratégia de dados
-│   ├── 03-prompts.md                 # Engenharia de prompts
-│   ├── 04-metricas.md                # Avaliação e métricas
-│   └── 05-pitch.md                   # Roteiro do pitch
-│
-├── 📁 src/                           # Código da aplicação
-│   └── app.py                        # (exemplo de estrutura)
-```
-
----
-
-## Dicas Finais
-
-1. **Comece pelo prompt:** Um bom system prompt é a base de um agente eficaz
-2. **Use os dados mockados:** Eles garantem consistência e evitam problemas com dados sensíveis
-3. **Foque na segurança:** No setor financeiro, evitar alucinações é crítico
-4. **Teste cenários reais:** Simule perguntas que um cliente faria de verdade
-5. **Seja direto no pitch:** 3 minutos passam rápido, vá ao ponto
+O agente funciona utilizando a abordagem de **RAG (Retrieval-Augmented Generation)** combinada com um **System Prompt estruturado** (guardrails de comportamento).
