@@ -1,4 +1,4 @@
-"""# finAI 🚀 | Agente Financeiro Inteligente & Proativo
+# finAI 🚀 | Agente Financeiro Inteligente & Proativo
 
 > Desafio de Projeto realizado para o Lab **"BIA do Futuro"** da **DigitalInnovationOne (DIO)** em parceria com o **Bradesco**.
 
